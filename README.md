@@ -24,7 +24,7 @@
 #### Meta controllers
 
 ## Implementation
-[[./implementation_details.ipynb]]
+[Details](./implementation_details.ipynb)
 
 
 ## Citing
