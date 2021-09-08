@@ -52,7 +52,7 @@ feature maps. We then concatenate keypoints with proprioception (joint
 angles and past five frames of gripper states [4]), and concatenated
 vectors are passed through fully connected layers with LeakyReLU
 activation, outputting end-effector motor commands. The subgoal
-encoder $E_k$ is a ResNet-18 module with spatial softmax module, and
+encoder ![][latex_imgs/E_k.svg] is a ResNet-18 module with spatial softmax module, and
 $E_k$ only takes the image from the workspace camera of the subgoal
 state in demonstration data as inputs. The meta controller $\pi_{H}$
 takes the image of current observation from the workspace camera as
@@ -97,12 +97,17 @@ choose 0.005 for <tt>Tool-Use</tt>, <tt>Hammer-Place</tt>, and
 ## References
 [1] Making sense of vision and touch: Learning multimodal
 representations for contact-rich tasks. Lee M. et al.
+
 [2] Deep residual learning for image recognition. He K. et al.
+
 [3] Deep spatial autoencoders for visuomotor learning. Finn C. et al.
+
 [4] Deep imitation learning for complex manipulation tasks from
 virtual reality teleoperation. Zhang T. et al.
+
 [5] A unified approach for motion and force control of robot
 manipulators: The operational space formulation. Khatib O.
+
 [6] Image augmentation is all you need: Regularizing deep
 reinforcement learning from pixels. Kostrikov I. et al.
 
