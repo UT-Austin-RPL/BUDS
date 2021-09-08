@@ -41,6 +41,7 @@ end-to-end method is another future direction to look at.
 
 
 ### Model Details for Sensorimotor Policies
+
 BUDS focuses on learning closed-loop sensorimotor skills. The input to
 each skill is the observations from robot sensors and the latent
 subgoal vector $\omega_{t}$. Specifically, the observations consist of
@@ -52,7 +53,7 @@ feature maps. We then concatenate keypoints with proprioception (joint
 angles and past five frames of gripper states [4]), and concatenated
 vectors are passed through fully connected layers with LeakyReLU
 activation, outputting end-effector motor commands. The subgoal
-encoder ![][latex_imgs/E_k.svg] is a ResNet-18 module with spatial softmax module, and
+encoder $E_k$ is a ResNet-18 module with spatial softmax module, and
 $E_k$ only takes the image from the workspace camera of the subgoal
 state in demonstration data as inputs. The meta controller $\pi_{H}$
 takes the image of current observation from the workspace camera as
