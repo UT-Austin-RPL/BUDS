@@ -1,0 +1,6 @@
+# @package _group_
+environment: "HammerPlaceEnv"
+controller: "OSC_POSITION"
+robots: ["Panda"]
+arm: "right"
+config: null

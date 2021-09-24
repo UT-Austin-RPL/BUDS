@@ -1,0 +1,4 @@
+# @package _group_
+dataset_name: "KitchenEnv_training_set"
+env: "KitchenEnv"
+folder: "datasets/KitchenEnv_training_set"

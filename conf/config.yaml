@@ -1,0 +1,20 @@
+defaults:
+  - repr: agentview_eye_in_hand_proprio_no_skip
+  - data: kitchen_full
+  - agglomoration: ${defaults.1.data}
+  - skill_training: normal_subgoal
+  - skill_subgoal_cfg: ${defaults.3.skill_training}
+  - meta: ${defaults.3.skill_training}
+  - meta_cvae_cfg: ${defaults.1.data}
+  - env: ${defaults.1.data}
+  - multitask: defaults
+  - eval: ${defaults.1.data}
+  - video: defaults
+use_checkpoint: false
+record_states: true
+verbose: true
+folder: ./
+hydra:
+    run:
+        dir: .
+ 

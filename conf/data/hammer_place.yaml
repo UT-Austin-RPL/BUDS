@@ -1,0 +1,4 @@
+# @package _group_
+dataset_name: "HammerPlaceEnv_training_set"
+env: "HammerPlaceEnv"
+folder: "datasets/HammerPlaceEnv_training_set"

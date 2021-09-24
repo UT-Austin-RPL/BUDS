@@ -1,0 +1,4 @@
+# @package _group_
+dataset_name: "MultitaskKitchenDomain_training_set"
+env: "MultitaskKitchenDomain"
+folder: "datasets/MultitaskKitchenDomain_training_set"
