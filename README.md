@@ -1,4 +1,4 @@
-# Bottom-up Discovery of Reusable Sensorimotor Skills from Unstructured Demonstrations (BUDS)
+# Bottom-Up Skill Discovery from Unsegmented Demonstrations for Long-Horizon Robot Manipulation (BUDS)
 
 ## Dependencies
 - Robosuite
