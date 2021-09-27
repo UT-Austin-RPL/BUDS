@@ -1,4 +1,4 @@
-# Bottom-Up Skill Discovery from Unsegmented Demonstrations for Long-Horizon Robot Manipulation (BUDS)
+# Bottom-Up Skill Discovery from Unsegmented Demonstrations for Long-Horizon Robot Manipulation
 
 ## Dependencies
 - Robosuite
