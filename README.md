@@ -82,7 +82,7 @@ python skill_discovery/hierarchical_agglomoration.py data=kitchen
 2. Multi-task
 
 ``` shell
-	python multitask/hierarchical_agglomoration.py data=multitask_kitchen_domain
+python multitask/hierarchical_agglomoration.py data=multitask_kitchen_domain
 ```
 
 #### Spectral Clustering for K partitions
@@ -135,14 +135,11 @@ python multitask/train_meta_controller.py skill_training.agglomoration.K=$2 skil
 python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=tool_use skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
 ```
 
-
-
 1. HammerPlace
 
 ``` shell
 python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=hammer_place skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
 ```
-
 
 1. Kitchen
 
