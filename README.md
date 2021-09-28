@@ -42,7 +42,7 @@ collect data using robosuite simulation enviornments.
 
 
 ``` shell
-python data_collection/collect_demonstration_script.py --num-demonstration 100  --pos-sensitivity 1.0 --controller OSC_POSITION --environment ToolUseEnvV1
+python data_collection/collect_demonstration_script.py --num-demonstration 100  --pos-sensitivity 1.0 --controller OSC_POSITION --environment ToolUseEnv
 ```
 
 
@@ -76,7 +76,7 @@ python multisensory_repr/train_multimodal.py
 #### Hierarchical Agglomerative Clustering
 1. Single Task
 ``` shell
-python skill_discovery/hierarchical_agglomoration.py data=kitchen_full
+python skill_discovery/hierarchical_agglomoration.py data=kitchen
 ```
 
 2. Multi-task
@@ -89,13 +89,13 @@ python skill_discovery/hierarchical_agglomoration.py data=kitchen_full
 1. Single Task
 
 ``` shell
-python skill_disocvery/agglomoration_script.py data=kitchen_full agglomoration.visualization=true repr.modalities="[agentview, eye_in_hand, proprio]" agglomoration.min_len_thresh=30 agglomoration.K=8 agglomoration.segment_scale=2 agglomoration.scale=0.01
+python skill_disocvery/agglomoration_script.py data=kitchen agglomoration.visualization=true repr.modalities="[agentview, eye_in_hand, proprio]" agglomoration.min_len_thresh=30 agglomoration.K=8 agglomoration.segment_scale=2 agglomoration.scale=0.01
 ```
 
 2. Multi-task
 
 ``` shell
-python skill_classification/agglomoration_script.py data=kitchen_full agglomoration.visualization=true repr.modalities="[agentview, eye_in_hand, proprio]" agglomoration.min_len_thresh=30 agglomoration.K=8 agglomoration.segment_scale=2 agglomoration.scale=0.01
+python skill_classification/agglomoration_script.py data=kitchen agglomoration.visualization=true repr.modalities="[agentview, eye_in_hand, proprio]" agglomoration.min_len_thresh=30 agglomoration.K=8 agglomoration.segment_scale=2 agglomoration.scale=0.01
 ```
 
 ### Policy Learning
@@ -106,7 +106,7 @@ python skill_classification/agglomoration_script.py data=kitchen_full agglomorat
 1. Single-task 
 
 ``` shell
-python policy_learning/train_subskills_hydra.py skill_training.agglomoration.K=$2 skill_training.run_idx=2 data=kitchen_full skill_training.batch_size=128 skill_subgoal_cfg.visual_feature_dimension=32 skill_training.subtask_id="[$3]" skill_training.data_modality="[image, proprio]" skill_training.lr=1e-4 skill_training.num_epochs=2001 repr.z_dim=32
+python policy_learning/train_subskills_hydra.py skill_training.agglomoration.K=$2 skill_training.run_idx=2 data=kitchen skill_training.batch_size=128 skill_subgoal_cfg.visual_feature_dimension=32 skill_training.subtask_id="[$3]" skill_training.data_modality="[image, proprio]" skill_training.lr=1e-4 skill_training.num_epochs=2001 repr.z_dim=32
 ```
 
 2. Multi-task
@@ -120,7 +120,7 @@ python multitask/train_subskills.py skill_training.agglomoration.K=$2 skill_trai
 
 1. Single Task
 ``` shell
-python policy_learning/train_meta_controller_hydra.py skill_training.agglomoration.K=5 skill_training.run_idx=2 data=hammer_sort skill_training.batch_size=128 skill_subgoal_cfg.visual_feature_dimension=32 skill_training.data_modality="[image, proprio]" skill_training.lr=1e-4 skill_training.num_epochs=2001 meta_cvae_cfg.latent_dim=64  meta.use_eye_in_hand=False meta.random_affine=True meta_cvae_cfg.kl_coeff=0.005 repr.z_dim=32
+python policy_learning/train_meta_controller_hydra.py skill_training.agglomoration.K=5 skill_training.run_idx=2 data=hammer_place skill_training.batch_size=128 skill_subgoal_cfg.visual_feature_dimension=32 skill_training.data_modality="[image, proprio]" skill_training.lr=1e-4 skill_training.num_epochs=2001 meta_cvae_cfg.latent_dim=64  meta.use_eye_in_hand=False meta.random_affine=True meta_cvae_cfg.kl_coeff=0.005 repr.z_dim=32
 ```
 
 2. Multi-task
@@ -132,22 +132,22 @@ python multitask/train_meta_controller.py skill_training.agglomoration.K=$2 skil
 1. ToolUse
 
 ``` shell
-python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=tool_use_v1 skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
+python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=tool_use skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
 ```
 
 
 
-1. Hammer
+1. HammerPlace
 
 ``` shell
-python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=hammer_sort skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
+python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=hammer_place skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
 ```
 
 
 1. Kitchen
 
 ``` shell
-python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=kitchen_full skill_training.agglomoration.K=6 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=5000 meta_cvae_cfg.kl_coeff=0.01  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
+python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=kitchen skill_training.agglomoration.K=6 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=5000 meta_cvae_cfg.kl_coeff=0.01  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
 ```
 
 
