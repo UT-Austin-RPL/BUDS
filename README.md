@@ -1,4 +1,14 @@
 # Bottom-Up Skill Discovery from Unsegmented Demonstrations for Long-Horizon Robot Manipulation (BUDS)
+[Yifeng Zhu](https://www.cs.utexas.edu/~yifengz), [Peter Stone](https://www.cs.utexas.edu/~pstone), [Yuke Zhu](https://www.cs.utexas.edu/~yukez/)
+
+
+[Project](https://ut-austin-rpl.github.io/rpl-BUDS/) | [arxiv]() 
+
+
+## Introduction
+BUDS is a framework to discover skills from multi-sensory
+demonstration data and learn visuomotor policies for each skills. 
+
 
 ## Dependencies
 - Robosuite
@@ -15,13 +25,18 @@ multi-task one. They are <tt>Hammer-Place</tt>, <tt>Tool-Use</tt>,
 
 
 ## Data
-We provide the demonstration data we have.
+We provide the demonstration data we use for our experiments. Download
+the
+[data](https://utexas.box.com/shared/static/om0pegpm0hdi12clydau36d3vy0yz516.zip),
+and extract under the repo, and name it `datasets`.
 
 
 ## Instructions on running scripts
 
 
 ### Demonstration collection
+We collect demonstrations using 3D spacemouse. Here we describe how we
+collect data using robosuite simulation enviornments.
 
 1. Single-task
 
@@ -117,7 +132,7 @@ python multitask/train_meta_controller.py skill_training.agglomoration.K=$2 skil
 1. ToolUse
 
 ``` shell
-python goal_skill_learning/eval_task.py skill_training.data_modality="[image, proprio]" data=tool_use_v1 skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
+python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=tool_use_v1 skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
 ```
 
 
@@ -125,14 +140,14 @@ python goal_skill_learning/eval_task.py skill_training.data_modality="[image, pr
 1. Hammer
 
 ``` shell
-python goal_skill_learning/eval_task.py skill_training.data_modality="[image, proprio]" data=hammer_sort skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
+python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=hammer_sort skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
 ```
 
 
 1. Kitchen
 
 ``` shell
-python goal_skill_learning/eval_task.py skill_training.data_modality="[image, proprio]" data=kitchen_full skill_training.agglomoration.K=6 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=5000 meta_cvae_cfg.kl_coeff=0.01  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
+python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=kitchen_full skill_training.agglomoration.K=6 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=5000 meta_cvae_cfg.kl_coeff=0.01  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
 ```
 
 
