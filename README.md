@@ -2,7 +2,7 @@
 [Yifeng Zhu](https://www.cs.utexas.edu/~yifengz), [Peter Stone](https://www.cs.utexas.edu/~pstone), [Yuke Zhu](https://www.cs.utexas.edu/~yukez/)
 
 
-[Project](https://ut-austin-rpl.github.io/rpl-BUDS/) | [arxiv](http://arxiv.org/abs/2109.13841) 
+[Project](https://ut-austin-rpl.github.io/rpl-BUDS/)  <!-- | [arxiv](http://arxiv.org/abs/2109.13841)  -->
 
 
 ## Introduction
@@ -26,8 +26,7 @@ multi-task one. They are <tt>Hammer-Place</tt>, <tt>Tool-Use</tt>,
 
 ## Data
 We provide the demonstration data we use for our experiments. Download
-the
-[data](https://utexas.box.com/shared/static/om0pegpm0hdi12clydau36d3vy0yz516.zip),
+the [data](https://utexas.box.com/shared/static/om0pegpm0hdi12clydau36d3vy0yz516.zip),
 and extract under the repo, and name it `datasets`.
 
 
