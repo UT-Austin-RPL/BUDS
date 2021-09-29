@@ -41,7 +41,7 @@ from pathlib import Path
 import robosuite.utils.macros as macros
 macros.IMAGE_CONVENTION = "opencv"
 
-OUR_MODEL = "ours"
+OUR_MODEL = "BUDS"
 
 
 def offscreen_visualization(env, use_eye_in_hand=True):    

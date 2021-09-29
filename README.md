@@ -138,19 +138,19 @@ python multitask/train_meta_controller.py skill_training.agglomoration.K=$2 skil
 1. ToolUse
 
 ``` shell
-python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=tool_use skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
+python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=tool_use skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="BUDS"
 ```
 
 1. HammerPlace
 
 ``` shell
-python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=hammer_place skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
+python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=hammer_place skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="BUDS"
 ```
 
 1. Kitchen
 
 ``` shell
-python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=kitchen skill_training.agglomoration.K=6 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=5000 meta_cvae_cfg.kl_coeff=0.01  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="ours"
+python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=kitchen skill_training.agglomoration.K=6 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=5000 meta_cvae_cfg.kl_coeff=0.01  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="BUDS"
 ```
 
 
