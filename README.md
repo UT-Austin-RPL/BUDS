@@ -13,17 +13,15 @@ We tackle real-world long-horizon robot manipulation tasks through skill discove
 - pytorch
 - sklearn
 
-## Environments
+## Simulation Environments
 We implemented four simulated environments for evaluation, including three single-task ones and a
 multi-task one. They are <tt>Hammer-Place</tt>, <tt>Tool-Use</tt>,
 <tt>Kitchen</tt>, <tt>Multitask-Kitchen</tt>. The implementations of these environments can be found in 
 [robosuite-task-zoo](https://github.com/ARISE-Initiative/robosuite-task-zoo). 
 
 
-## Data
-We provide the demonstration data we use for our experiments. Download
-the [data](https://utexas.box.com/shared/static/om0pegpm0hdi12clydau36d3vy0yz516.zip),
-and extract under the repo, and name it `datasets`.
+## Demonstration Data
+We provide the demonstration data we used for our experiments. Please download the datasets [here](https://utexas.box.com/shared/static/om0pegpm0hdi12clydau36d3vy0yz516.zip), and extract them in the root folder of this repo, and name the folder `datasets`.
 
 
 ## Instructions on running scripts
@@ -40,7 +38,7 @@ task variant.
 1. Single-task
 
 
-``` shell
+```shell
 python data_collection/collect_demonstration_script.py --num-demonstration 100  --pos-sensitivity 1.0 --controller OSC_POSITION --environment ToolUseEnv
 ```
 
@@ -139,13 +137,13 @@ python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]"
 
 1. HammerPlace
 
-``` shell
+```shell
 python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=hammer_place skill_training.agglomoration.K=4 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=1500 meta_cvae_cfg.kl_coeff=0.005  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="BUDS"
 ```
 
 1. Kitchen
 
-``` shell
+```  shell
 python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]" data=kitchen skill_training.agglomoration.K=6 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=5000 meta_cvae_cfg.kl_coeff=0.01  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true eval.mode="BUDS"
 ```
 
@@ -157,4 +155,4 @@ python multitask/eval_task.py skill_training.data_modality="[image, proprio]" da
 ```
 
 ## Implementation Details
-Please see [this page] for more information about our implementation details including training procedures and hyperparameters.
+Please see [this page](implementation_details.ipynb) for more information about our implementation details including training procedures and hyperparameters.
