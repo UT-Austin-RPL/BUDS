@@ -1,4 +1,4 @@
-# Bottom-Up Skill Discovery from Unsegmented Demonstrations for Long-Horizon Robot Manipulation (BUDS)
+# Bottom-Up Skill Discovery from Unsegmented Demonstrations for Long-Horizon Robot Manipulation
 [Yifeng Zhu](https://www.cs.utexas.edu/~yifengz), [Peter Stone](https://www.cs.utexas.edu/~pstone), [Yuke Zhu](https://www.cs.utexas.edu/~yukez/)
 
 
@@ -6,21 +6,17 @@
 
 
 ## Introduction
-BUDS is a framework to discover skills from multi-sensory
-demonstration data and learn visuomotor policies for each skills. 
-
+We tackle real-world long-horizon robot manipulation tasks through skill discovery. We present a bottom-up approach to learning a library of reusable skills from unsegmented demonstrations and use these skills to synthesize prolonged robot behaviors. Our method starts with constructing a hierarchical task structure from each demonstration through agglomerative clustering. From the task structures of multi-task demonstrations, we identify skills based on the recurring patterns and train goal-conditioned sensorimotor policies with hierarchical imitation learning. Finally, we train a meta controller to compose these skills to solve long-horizon manipulation tasks. The entire model can be trained on a small set of human demonstrations collected within 30 minutes without further annotations, making it amendable to real-world deployment. We systematically evaluated our method in simulation environments and on a real robot. Our method has shown superior performance over state-of-the-art imitation learning methods in multi-stage manipulation tasks. Furthermore, skills discovered from multi-task demonstrations boost the average task success by 8% compared to those discovered from individual tasks.
 
 ## Dependencies
-- Robosuite
+- [robosuite](https://github.com/ARISE-Initiative/robosuite/)
 - pytorch
 - sklearn
 
-
-
 ## Environments
-We implemented four environments, three single-task ones and a
+We implemented four simulated environments for evaluation, including three single-task ones and a
 multi-task one. They are <tt>Hammer-Place</tt>, <tt>Tool-Use</tt>,
-<tt>Kitchen</tt>, <tt>Multitask-Kitchen</tt>. Please refer to
+<tt>Kitchen</tt>, <tt>Multitask-Kitchen</tt>. The implementations of these environments can be found in 
 [robosuite-task-zoo](https://github.com/ARISE-Initiative/robosuite-task-zoo). 
 
 
@@ -160,13 +156,5 @@ python eval_scripts/eval_task.py skill_training.data_modality="[image, proprio]"
 python multitask/eval_task.py skill_training.data_modality="[image, proprio]" data=multitask_kitchen_domain skill_training.agglomoration.K=8 meta_cvae_cfg.latent_dim=64 repr.z_dim=32 skill_training.run_idx=0 eval.meta_freq=5 eval.max_steps=2500 meta_cvae_cfg.kl_coeff=0.01  meta.use_spatial_softmax=false meta.random_affine=true eval.testing=true multitask.task_id=0 skill_subgoal_cfg.horizon=20 multitask.training_task_id=0 verbose=false
 ```
 
-## Implementation
-[Details](./implementation_details.ipynb)
-
-
-## Citing
-
-
-```
-
-```
+## Implementation Details
+Please see [this page] for more information about our implementation details including training procedures and hyperparameters.
