@@ -2,7 +2,7 @@
 [Yifeng Zhu](https://www.cs.utexas.edu/~yifengz), [Peter Stone](https://www.cs.utexas.edu/~pstone), [Yuke Zhu](https://www.cs.utexas.edu/~yukez/)
 
 
-[Project](https://ut-austin-rpl.github.io/rpl-BUDS/) | [arxiv]() 
+[Project](https://ut-austin-rpl.github.io/rpl-BUDS/) | [arxiv](http://arxiv.org/abs/2109.13841) 
 
 
 ## Introduction
@@ -35,8 +35,12 @@ and extract under the repo, and name it `datasets`.
 
 
 ### Demonstration collection
-We collect demonstrations using 3D spacemouse. Here we describe how we
-collect data using robosuite simulation enviornments.
+
+We collect demonstrations using 3D spacemouse. The following commands
+show how we can collect data in a single-task environment or a
+multi-task environment. For multi-task environment, you need to
+specify another variable, `task-id`, which is mapped to indiividual
+task variant.
 
 1. Single-task
 
@@ -54,6 +58,9 @@ python multitask/collect_demonstration_script.py --num-demonstration 40 --pos-se
 
 
 ### Create dataset
+
+After demonstrations are collected, we want to create a dataset in
+hdf5 file format for skill discovery and policy learning.
 
 
 ``` shell
@@ -95,7 +102,7 @@ python skill_disocvery/agglomoration_script.py data=kitchen agglomoration.visual
 2. Multi-task
 
 ``` shell
-python skill_classification/agglomoration_script.py data=kitchen agglomoration.visualization=true repr.modalities="[agentview, eye_in_hand, proprio]" agglomoration.min_len_thresh=30 agglomoration.K=8 agglomoration.segment_scale=2 agglomoration.scale=0.01
+python skill_discovery/agglomoration_script.py data=kitchen agglomoration.visualization=true repr.modalities="[agentview, eye_in_hand, proprio]" agglomoration.min_len_thresh=30 agglomoration.K=8 agglomoration.segment_scale=2 agglomoration.scale=0.01
 ```
 
 ### Policy Learning
@@ -106,7 +113,7 @@ python skill_classification/agglomoration_script.py data=kitchen agglomoration.v
 1. Single-task 
 
 ``` shell
-python policy_learning/train_subskills_hydra.py skill_training.agglomoration.K=$2 skill_training.run_idx=2 data=kitchen skill_training.batch_size=128 skill_subgoal_cfg.visual_feature_dimension=32 skill_training.subtask_id="[$3]" skill_training.data_modality="[image, proprio]" skill_training.lr=1e-4 skill_training.num_epochs=2001 repr.z_dim=32
+python policy_learning/train_subskills.py skill_training.agglomoration.K=$2 skill_training.run_idx=2 data=kitchen skill_training.batch_size=128 skill_subgoal_cfg.visual_feature_dimension=32 skill_training.subtask_id="[$3]" skill_training.data_modality="[image, proprio]" skill_training.lr=1e-4 skill_training.num_epochs=2001 repr.z_dim=32
 ```
 
 2. Multi-task
@@ -120,7 +127,7 @@ python multitask/train_subskills.py skill_training.agglomoration.K=$2 skill_trai
 
 1. Single Task
 ``` shell
-python policy_learning/train_meta_controller_hydra.py skill_training.agglomoration.K=5 skill_training.run_idx=2 data=hammer_place skill_training.batch_size=128 skill_subgoal_cfg.visual_feature_dimension=32 skill_training.data_modality="[image, proprio]" skill_training.lr=1e-4 skill_training.num_epochs=2001 meta_cvae_cfg.latent_dim=64  meta.use_eye_in_hand=False meta.random_affine=True meta_cvae_cfg.kl_coeff=0.005 repr.z_dim=32
+python policy_learning/train_meta_controller.py skill_training.agglomoration.K=5 skill_training.run_idx=2 data=hammer_place skill_training.batch_size=128 skill_subgoal_cfg.visual_feature_dimension=32 skill_training.data_modality="[image, proprio]" skill_training.lr=1e-4 skill_training.num_epochs=2001 meta_cvae_cfg.latent_dim=64  meta.use_eye_in_hand=False meta.random_affine=True meta_cvae_cfg.kl_coeff=0.005 repr.z_dim=32
 ```
 
 2. Multi-task
